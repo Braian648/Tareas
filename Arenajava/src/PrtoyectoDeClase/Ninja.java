@@ -1,0 +1,46 @@
+package PrtoyectoDeClase;
+
+
+public class Ninja extends Personaje {
+	
+	private boolean escondido = false;
+
+    public Ninja(String nombre) {
+        super(nombre, 100, 21, 10);
+    }
+    
+    
+    public void DisparoDoble(Personaje enemigo) {
+
+        System.out.println(getNombre() + " usa Disparo Doble.");
+
+        enemigo.recibirDaño(25);
+
+        System.out.println("¡Causó 25 de daño!");
+    }
+    
+    
+ 
+    public void esconderse(Personaje enemigo) {
+
+        escondido = true;
+
+        System.out.println(getNombre() + " se escondió entre las sombras.");
+        
+        int daño = 18;
+
+        
+		enemigo.recibirDaño(daño);
+
+        System.out.println(getNombre()  + " atacó desde las sombras causando " + daño + " de daño.");
+    }
+
+    public boolean estaEscondido() {
+        return escondido;
+    }
+
+    public void salirEscondite() {
+        escondido = false;
+    }
+		
+}

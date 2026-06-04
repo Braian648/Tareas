@@ -2,7 +2,7 @@ package PrtoyectoDeClase;
 
 
 	public class Personaje {
-	    private String nombre;
+		private String nombre;
 	    private int vida;
 	    private int ataque;
 	    private int defensa;
@@ -15,15 +15,31 @@ package PrtoyectoDeClase;
 	    }
 
 	    public void atacar(Personaje enemigo) {
+	        int suerte = (int)(Math.random() * 10) + 1;
+
+	        if (suerte > 2) {
+	            int ataqueRandom = 20 + (int)(Math.random() * 11);
+	            int defensaRandom = 5 + (int)(Math.random() * 11);
+	            int daño = ataqueRandom - defensaRandom;
+	            if (daño < 0) { 
+	                daño = 0; 
+	            }
+
+	            enemigo.recibirDaño(daño);
+	            System.out.println(nombre + " ATACA CON " + ataqueRandom + " Y " + enemigo.getNombre() + " DEFIENDE CON " + defensaRandom);
+
+	        } else {
+	            System.out.println(nombre + " FALLO EL ATAQUE NORMAL");
+	        }
+	    
+	    	 
 	        int daño = ataque - enemigo.defensa;
+
 
 	        if (daño < 0) {
 	            daño = 0;
 	        }
 
-	        enemigo.recibirDaño(daño);
-	        System.out.println("CASTER: " + nombre + " ATACA A " + enemigo.nombre + " CAUSANDOLE  " + daño
-	        + " DE DAÑO.");
 	    }
 
 	    public void recibirDaño(int daño) {
@@ -39,10 +55,6 @@ package PrtoyectoDeClase;
 	        System.out.println("Nombre: " + nombre);
 	        
 	        System.out.println("Vida: " + vida);
-	        
-	        System.out.println("Ataque: " + ataque);
-	        
-	        System.out.println("Defensa: " + defensa);
 	        System.out.println("------------------------------------");
 	        
 	    }
@@ -51,6 +63,12 @@ package PrtoyectoDeClase;
 	    }
 	    public String getNombre() {
 	    	return nombre;
+	    }
+	    public void setDefensa(int defensa) {
+	        this.defensa = defensa;
+	    }
+	    public int getDefensa() {
+	        return defensa;
 	    }
 	    
 }
